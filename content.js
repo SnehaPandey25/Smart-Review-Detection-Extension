@@ -5,7 +5,7 @@ if (typeof window.reviewAnalyzerInitialized === 'undefined') {
     let analyzedData = null;
 
     function extractReviews() {
-        const reviewElements = document.querySelectorAll('div.review');
+        const reviewElements = document.querySelectorAll('[data-hook="review"]');
         const reviews = [];
         
         reviewElements.forEach(review => {
@@ -59,9 +59,9 @@ if (typeof window.reviewAnalyzerInitialized === 'undefined') {
     // Listen for messages from popup
     chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         if (request.action === "getReviews") {
-            if (analyzedData) {
-                sendResponse(analyzedData);
-            } else {
+            // if (analyzedData) {
+            //     sendResponse(analyzedData);
+            // } else {
                 const reviews = extractReviews();
                 if (reviews.length > 0) {
                     analyzeReviews(reviews).then(predictions => {
@@ -80,7 +80,7 @@ if (typeof window.reviewAnalyzerInitialized === 'undefined') {
                 } else {
                     sendResponse({ error: "No reviews found" });
                 }
-            }
+            //}
             return true; // Required for async sendResponse
         }
     });
