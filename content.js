@@ -27,7 +27,8 @@ if (typeof window.reviewAnalyzerInitialized === 'undefined') {
     async function analyzeReviews(reviews) {
         try {
             console.log('Sending reviews:', reviews);
-            const response = await fetch('http://127.0.0.1:5000/predict_batch', {
+            //const response = await fetch('http://127.0.0.1:5000/predict_batch', {
+            const response = await fetch('https://smart-review-detection-extension.onrender.com/predict_batch', {
                 method: 'POST',
                 mode: 'cors', 
                 cache: 'no-cache',
