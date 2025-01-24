@@ -48,9 +48,8 @@ app = Flask(__name__)
 CORS(app, resources={
     r"/*": {
         "origins": [
-            "https://www.amazon.in", 
-            "http://localhost", 
-            "http://127.0.0.1", 
+            "https://www.amazon.in",
+            "https://smart-review-detection-extension.onrender.com",
             "chrome-extension://*"
         ],
         "methods": ["GET", "POST", "OPTIONS"],
@@ -61,9 +60,8 @@ CORS(app, resources={
 @app.route('/predict_batch', methods=['OPTIONS', 'POST'])
 @cross_origin(
     origins=[
-        "https://www.amazon.in", 
-        "http://localhost", 
-        "http://127.0.0.1", 
+        "https://www.amazon.in",  
+        "https://smart-review-detection-extension.onrender.com",
         "chrome-extension://*"
     ],
     methods=["POST", "OPTIONS"],
